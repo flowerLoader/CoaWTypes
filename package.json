@@ -1,0 +1,18 @@
+{
+  "name": "@flowerloader/coawtypes",
+  "version": "1.0.0",
+  "description": "Type information for Creator of Another World",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Robin",
+  "license": "CC-BY-NC-SA-4.0",
+  "devDependencies": {
+    "@eslint/js": "^9.2.0",
+    "eslint": "^8.57.0",
+    "globals": "^15.2.0",
+    "typescript": "^5.4.5",
+    "typescript-eslint": "^7.9.0"
+  }
+}

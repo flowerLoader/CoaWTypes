@@ -1,2 +1,2 @@
 # CoaWTypes
-Type definitions for Creator of Another World
+Game Types for Creator of Another World
