@@ -17,7 +17,7 @@ export interface tGameCharactor
 	 * Appears to be a list of all teams in the game world
 	 * @defaultValue {}
 	 */
-	teams: { [key: number]: any }
+	teams: { [key: string]: any }
 	/**
 	 * Unknown
 	 * @defaultValue 1e5
