@@ -4,84 +4,139 @@
  */
 
 import { tGameMain } from "./tGameMain"
+
 export interface tGameCharactor
 {
-	/**
-	* Unknown
-	*/
 	parent: tGameMain
 	/**
-	* Unknown
-	*/
-	charas: any
+	 * Appears to be a list of all characters in the game world
+	 * @defaultValue {}
+	 */
+	charas: { [key: number]: any }
+	/**
+	 * Appears to be a list of all teams in the game world
+	 * @defaultValue {}
+	 */
+	teams: { [key: number]: any }
+	/**
+	 * Unknown
+	 * @defaultValue 1e5
+	 */
+	levelFraction: number
+	/**
+	 * Container for state
+	 * @defaultValue state
+	 */
+	limit: {
+		/**
+		 * Unknown
+		 * @defaultValue [0, 9999900000]
+		 */
+		state: number[]
+	}
 	/**
 	* Unknown
+	* @defaultValue 10800
 	*/
-	teams: any
+	talkResetAddTime: number
 	/**
-	* Unknown
-	*/
-	levelFraction: any
+	 * Sets the maximum player party size
+	 * @defaultValue 5
+	 */
+	playerTeamMemberLimitNum: number
 	/**
-	* Unknown
-	*/
-	limit: any
+	 * Appears to control the maximum damage dealt in a single attack
+	 * @defaultValue 99999
+	 */
+	maxDamage: number
 	/**
-	* Unknown
-	*/
-	talkResetAddTime: any
+	 * Appears to be an enum for describing status effects
+	 */
+	conditionStatusPairs: { [key: string]: string };
+
 	/**
-	* Unknown
-	*/
-	playerTeamMemberLimitNum: any
+	 * Appears to control the minimum and maximum value for all number types
+	 * the game uses
+	 * 
+	 * Each number array has 2 members that describe the minimum and maximum
+	 * value for that type
+	 * @example level=[1, 999]
+	 */
+	statusMinMax: statusMinMax
 	/**
-	* Unknown
-	*/
-	maxDamage: any
+	 * Appears to be a list of IDs(?) that are a specific object or something(?)
+	 */
+	ctypeObjects: ctypeObjects
 	/**
-	* Unknown
-	*/
-	conditionStatusPairs: any
+	 * Unknown
+	 */
+	findPoliceConditions: ("cdt002" | "cdt003" | "cdt010" | "cdt021" | "cdt022" | "cdt601" | "cdt602" | "cdt603" | "cdt604" | "cdt608" | "cdt609" | "cdt614" | "cdt615")[]
 	/**
-	* Unknown
-	*/
-	statusMinMax: any
+	 * This is the object's constructor, sort of. Don't call it, ever.
+	 * By the time flower is running, you can't really hook it either.
+	 * This is probably useless to you, tbh
+	 */
+	init(): void
+
 	/**
-	* Unknown
-	*/
-	ctypeObjects: any
+	 * Methods documented below
+	 */
+
 	/**
-	* Unknown
-	*/
-	findPoliceConditions: any
+	 * Returns the relationship value of the characterID to the player
+	 * 
+	 * 
+	 * Returns false -> charas[id] is undefined
+	 * 
+	 * Returns false -> charas[id] is defined but its team is not
+	 * 
+	 * Returns 0 -> chars[CharaID].TeamID doesn't exist
+	 * 
+	 * Returns 1 -> TeamID is specifically Enemy
+	 * 
+	 * Returns 2 -> TeamID is specifically Player
+	 * 
+	 * Returns number -> charaID's relationship to player
+	 */
+	getToPlayerRelation(CharaID: number): false | 0 | 1 | 2 | number
+
 	/**
-	* Unknown
-	*/
-	init(a: any): any
+	 * Returns the relationship value of TeamA to TeamB
+	 * 
+	 * Returns false if either Team does not exist
+	 * 
+	 * Returns 0 -> TeamA has no relation to TeamB defined
+	 * 
+	 * Returns 1 -> Either Team is Enemy
+	 * 
+	 * Returns number -> TeamA's relationship to TeamB
+	 * 
+	 * @param TeamA An value indexing a team in {@link teams}
+	 * @param TeamB An value indexing a team in {@link teams}
+	 */
+	getTeamRelation(TeamA: string, TeamB: string): false | 0 | 1 | number
+
 	/**
-	* Unknown
-	*/
-	getToPlayerRelation(a: any): any
+	 * Unknown
+	 */
+	getBattleCharactors(A: any, B: any): any
+
 	/**
-	* Unknown
-	*/
-	getTeamRelation(a: any, b: any): any
+	 * Unknown
+	 */
+	updateTeamRelation(A: any, B: any, C: any): boolean
+
 	/**
-	* Unknown
-	*/
-	getBattleCharactors(a: any, b: any): any
+	 * Adds a team to the list of teams
+	 * 
+	 * See also: {@link TeamInfoStruct}
+	 */
+	addTeam(TeamInfo: TeamInfoStruct): any
+
 	/**
-	* Unknown
-	*/
-	updateTeamRelation(a: any, b: any, c: any): any
-	/**
-	* Unknown
-	*/
-	addTeam(a: any): any
-	/**
-	* Unknown
-	*/
-	addTeamMember(a: any, b: any, c: any): any
+	 * Appears to add a character to a team
+	 */
+	addTeamMember(TeamID: any, CharaID: number, TeamData?: any): boolean
 	/**
 	* Unknown
 	*/
@@ -95,17 +150,21 @@ export interface tGameCharactor
 	*/
 	removeTeamMember(a: any, b: any, c: any, d: any): any
 	/**
-	* Unknown
-	*/
-	removeTeam(a: any): any
+	 * Always returns false
+	 * @deprecated
+	 */
+	removeTeam(A: any): boolean
+
 	/**
-	* Unknown
-	*/
-	removeTeam0(a: any): any
+	 * Deletes a team from the team list and deletes all other team's
+	 * relationships with it, as well.
+	 */
+	removeTeam0(A: any): boolean
+
 	/**
-	* Unknown
-	*/
-	resetWaitTimeStorage(): any
+	 * Resets the WaitTimeStorage value of all charas in the game to 0
+	 */
+	resetWaitTimeStorage(): void
 	/**
 	* Unknown
 	*/
@@ -1351,3 +1410,38 @@ export interface tGameCharactor
 	*/
 	getItemSpaceMaxNum(a: any, b: any): any
 }
+
+type statusMinMax = { [key in typeof statusMinmaxEnum[number]]: minMaxTuple }
+type ctypeObjects = { [key in typeof ctypeObjectsEnum[number]]: ctypeObjectEntry }
+
+/**
+ * Describes a team
+ */
+type TeamInfoStruct =
+	{
+		id: any
+		name: string
+		teamData: any
+		isPoliceBattle: boolean
+		isTekitai: boolean
+		isTackleAffect: boolean
+		isPlayerExp: boolean
+		isTekitaiNotGae: boolean
+	}
+
+/**
+ * Describes the minimum and maximum value of a single number type
+ * 
+ * 0 is the minimum value and 1 is the maximum
+ * @example agi[0] = 45 //set minimum agility to 45
+ */
+type minMaxTuple = [number, number]
+
+/**
+ * May represent a list of tile or other IDs that are the object specified in the keyname
+ */
+type ctypeObjectEntry = number[]
+
+//enums
+export const statusMinmaxEnum = ["level", "fov", "itemspace", "fsp", "fame", "gae", "mhp", "mmp", "msp", "mfp", "mlp", "str", "vit", "mvt", "int", "mnd", "dex", "agi", "luk", "crm", "cmd", "waitTime", "t0atk001", "t0atk002", "t0atk003", "t0atk101", "t0atk102", "t0atk103", "t0atk104", "t0atk105", "t0atk106", "t0def001", "t0def002", "t0def003", "t0def101", "t0def102", "t0def103", "t0def104", "t0def105", "t0def106", "t0t1eva", "t0t1dex", "t0t2eva", "t0t2dex", "t0t3eva", "t0t3dex", "atk001", "atk002", "atk003", "atk101", "atk102", "atk103", "atk104", "atk105", "atk106", "def001", "def002", "def003", "def101", "def102", "def103", "def104", "def105", "def106", "defcdt001", "defcdt002", "defcdt003", "defcdt004", "defcdt005", "defcdt006", "defcdt007", "defcdt008", "defcdt009", "defcdt010", "defcdt011", "defcdt012", "defcdt013", "defcdt014", "defcdt015", "defcdt016", "defcdt017", "defcdt018", "defcdt019", "defcdt020", "defcdt021", "defcdt022", "defcdt023", "defcdt024", "defcdt025", "defcdt026", "defcdt027", "defcdt028", "defcdt029", "defcdt030", "defcdtall", "costcut", "cdtrate"] as const
+export const ctypeObjectsEnum = ["bchair", "schair", "kchair", "rchair", "fchair", "tchair", "ybed", "cchair"] as const
