@@ -2,7 +2,7 @@
   "name": "@flowerloader/coawtypes",
   "version": "1.0.0",
   "description": "Type information for Creator of Another World",
-  "main": "index.ts",
+  "main": "Index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
