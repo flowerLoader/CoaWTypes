@@ -6,13 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/flowerLoader/CoaWTypes.git"
+  },
   "author": "Robin",
   "license": "CC-BY-NC-SA-4.0",
-  "devDependencies": {
-    "@eslint/js": "^9.2.0",
-    "eslint": "^8.57.0",
-    "globals": "^15.2.0",
-    "typescript": "^5.4.5",
-    "typescript-eslint": "^7.9.0"
-  }
+  "homepage": "https://github.com/flowerLoader/CoaWTypes#readme"
 }
