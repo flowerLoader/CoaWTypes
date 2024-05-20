@@ -190,3 +190,4 @@ export * from "./GameTypes/tGameLoading2";
 export * from "./GameTypes/tGameDialog";
 export * from "./GameTypes/tGameMamonoJisho";
 export * from "./GameTypes/tGameNakamaHaken";
+export * from "./GameDataCOAW"
