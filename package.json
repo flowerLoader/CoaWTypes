@@ -4,7 +4,8 @@
   "description": "Type information for Creator of Another World",
   "main": "Index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc --project tsconfig.json",
+    "test": "tsc --noEmit --project tsconfig.json"
   },
   "repository": {
     "type": "git",
@@ -12,5 +13,8 @@
   },
   "author": "Robin",
   "license": "CC-BY-NC-SA-4.0",
-  "homepage": "https://github.com/flowerLoader/CoaWTypes#readme"
+  "homepage": "https://github.com/flowerLoader/CoaWTypes#readme",
+  "devDependencies": {
+    "typescript": "^7.0.2"
+  }
 }
