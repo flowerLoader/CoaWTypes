@@ -1,6 +1,5 @@
-import { tGameMain } from "./GameTypes/tGameMain"
+import type { tGameMain } from "./GameTypes/tGameMain";
 
-export type GameDataCOAW =
-    {
-        tGameMain: tGameMain
-    }
+export type GameDataCOAW = {
+	tGameMain: tGameMain;
+};
