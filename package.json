@@ -16,7 +16,7 @@
 	"license": "CC-BY-NC-SA-4.0",
 	"homepage": "https://github.com/flowerLoader/CoaWTypes#readme",
 	"devDependencies": {
-		"@biomejs/biome": "^2.5.8",
+		"@biomejs/biome": "2.5.7",
 		"typescript": "^7.0.2"
 	}
 }
