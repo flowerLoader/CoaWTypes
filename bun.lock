@@ -5,7 +5,7 @@
     "": {
       "name": "@flowerloader/coawtypes",
       "devDependencies": {
-        "@biomejs/biome": "2.5.7",
+        "@biomejs/biome": "<=2.5.7 || >2.5.9",
         "typescript": "^7.0.2",
       },
     },
